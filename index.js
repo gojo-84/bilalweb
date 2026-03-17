@@ -140,6 +140,50 @@ document.addEventListener('DOMContentLoaded', () => {
         observerAnim.observe(el);
     });
 
+    // Carousel pause on hover
+    const carousel = document.querySelector('.carousel-container');
+    if (carousel) {
+        carousel.addEventListener('mouseenter', () => {
+            carousel.style.animationPlayState = 'paused';
+        });
+        carousel.addEventListener('mouseleave', () => {
+            carousel.style.animationPlayState = 'running';
+        });
+    }
+
+    // Project image modal
+    const projectImages = document.querySelectorAll('.project-img');
+    projectImages.forEach(img => {
+        img.addEventListener('click', () => {
+            const modal = document.createElement('div');
+            modal.style.position = 'fixed';
+            modal.style.top = '0';
+            modal.style.left = '0';
+            modal.style.width = '100%';
+            modal.style.height = '100%';
+            modal.style.background = 'rgba(0,0,0,0.8)';
+            modal.style.display = 'flex';
+            modal.style.alignItems = 'center';
+            modal.style.justifyContent = 'center';
+            modal.style.zIndex = '10000';
+            modal.style.cursor = 'pointer';
+
+            const modalImg = document.createElement('img');
+            modalImg.src = img.src;
+            modalImg.style.maxWidth = '90%';
+            modalImg.style.maxHeight = '90%';
+            modalImg.style.borderRadius = '10px';
+            modalImg.style.boxShadow = '0 0 30px rgba(168, 85, 247, 0.5)';
+
+            modal.appendChild(modalImg);
+            document.body.appendChild(modal);
+
+            modal.addEventListener('click', () => {
+                document.body.removeChild(modal);
+            });
+        });
+    });
+
     // Contact form submission
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
@@ -156,7 +200,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
         });
     }
-});
+
+    // Commission form submission
+    const commissionForm = document.querySelector('.commission-form');
+    if (commissionForm) {
+        commissionForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Send email using EmailJS
+            emailjs.sendForm('service_y1tjg0l', 'template_jwxi2yg', this, 'Zj_yJMKm7FpZ0qafw')
+                .then(function() {
+                    alert('Buyurtma muvaffaqiyatli yuborildi! Tez orada siz bilan bog\'lanaman.');
+                    commissionForm.reset();
+                }, function(error) {
+                    alert('Xato yuz berdi: ' + JSON.stringify(error));
+                });
+        });
+    }});
 
 
 

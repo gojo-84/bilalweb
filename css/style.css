@@ -399,6 +399,29 @@ body {
     min-height: 100px;
 }
 
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #2d2d45;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+}
+
+.form-group input[type="file"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
 .contact-form button {
     width: 100%;
     padding: 12px;
@@ -412,6 +435,68 @@ body {
 }
 
 .contact-form button:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+
+/* Commission Form */
+.commission-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #2d2d45;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.commission-form .form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #2d2d45;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+}
+
+.commission-form .form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+.commission-form .form-group input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #2d2d45;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+}
+
+.commission-form .form-group input[type="date"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+.commission-form button {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.commission-form button:hover {
     opacity: 0.8;
     transform: translateY(-2px);
 }
@@ -430,6 +515,54 @@ body {
     font-size: 0.9rem;
 }
 
+/* Projects Carousel */
+.carousel {
+    overflow: hidden;
+    position: relative;
+    margin: 40px 0;
+}
+
+.carousel-container {
+    display: flex;
+    gap: 20px;
+    animation: scroll 20s linear infinite;
+}
+
+.project-card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #2d2d45;
+    min-width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.project-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover .project-img {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(168, 85, 247, 0.3);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
 /* Light theme adjustments */
 .light-theme .contact-form {
     background: #ffffff;
@@ -440,6 +573,65 @@ body {
 .light-theme .form-group textarea {
     border: 1px solid #ddd;
     background: #f9f9f9;
+}
+
+.light-theme .project-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+}
+
+.light-theme .commission-form {
+    background: #ffffff;
+    border: 1px solid #ddd;
+}
+
+.light-theme .commission-form .form-group select,
+.light-theme .commission-form .form-group input[type="date"] {
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+}
+
+@media (max-width: 768px) {
+    .carousel-container {
+        animation: scroll 30s linear infinite; /* Slower on tablet */
+    }
+    
+    .project-card {
+        min-width: 200px;
+        padding: 15px;
+    }
+    
+    .project-img {
+        height: 120px;
+    }
+}
+
+@media (max-width: 600px) {
+    .carousel-container {
+        animation: scroll 40s linear infinite; /* Even slower on mobile */
+        gap: 15px;
+    }
+    
+    .project-card {
+        min-width: 180px;
+        padding: 12px;
+    }
+    
+    .project-img {
+        height: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .commission-form {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .commission-form {
+        padding: 15px;
+    }
 }
 
 
@@ -498,4 +690,10 @@ body {
         transition: 0.4s;
     }
     .nav-links.active { right: 0; }
+}
+
+carusel {
+    justify-content: center;
+    margin: 100px auto;
+    width:90;
 }
